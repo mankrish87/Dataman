@@ -1,0 +1,630 @@
+# Week-by-Week, Day-by-Day Guide (Aug 19 – Oct 18, 2025)
+
+You have 8 hours/day. Every day includes:
+- Python DSA (90m) and Advanced SQL (60m)
+- Core labs for the weekly theme (135m)
+- Fundamentals/Basics (45m) or catch-up
+- System Design (45m) or documentation
+- Certifications study (60m)
+- Project work (45m on weekdays; 4–6h on weekends by reallocating blocks)
+
+Abbreviations:
+- DSA = Data Structures & Algorithms (Python)
+- SQL = Advanced SQL
+- Labs = Hands-on labs for the week’s primary topic
+- Fund = Fundamentals/Basics (Linux, Git, Python packaging, networking, data modeling)
+- SD = System Design
+- Cert = Certifications (DBX-DEA, AWS SAA, AWS DEA)
+- Proj = Weekly project tasks
+- DBX = Databricks
+- GE = Great Expectations
+
+Tip: Keep a “mistakes log” and a small “perf notebook” for measurements. Use README-first for projects.
+
+--------------------------------------------------------------------------------
+
+WEEK 1: Tue Aug 19 – Sun Aug 24 (Foundations: Linux, Git, SQL Core, Python Baseline)
+Goal: Get local environment ready; strong Linux/Git/Python/test baseline; deliver Postgres ETL+analytics.
+
+Tue Aug 19
+- DSA (90m): Arrays & Strings basics; solve 3–4 easy→medium; note complexity.
+- SQL (60m): INNER/LEFT/ANTI joins; 2 queries with EXPLAIN/ANALYZE on Postgres.
+- Labs (135m): Install Docker, Compose, Python 3.11, Poetry/pyenv; spin up Postgres in Docker.
+- Fund (45m): Linux navigation, files/permissions, grep/sed/awk basics.
+- SD (45m): Batch vs streaming overview; ingestion→staging→marts pattern.
+- Cert (60m): SAA + DEA overview, exam domains; create flashcards (IAM, storage).
+- Proj (45m): Project 1 spec (README-first): inputs (nginx/app logs), outputs, acceptance tests.
+
+Wed Aug 20
+- DSA: Hashing; 3–4 problems (frequency maps, anagrams, 2-sum variants).
+- SQL: Window functions basics (row_number, rank, dense_rank); 2 queries.
+- Labs: Python project skeleton (pytest, ruff/black, mypy); pre-commit; basic CLI with argparse.
+- Fund: Git branching, PR, rebase vs merge; set up GitHub repo + Actions.
+- SD: Idempotency and retries; write a small idempotent transform.
+- Cert: SAA IAM primer (users/roles/policies, MFA); DEA storage overview.
+- Proj: Set up Postgres schema: staging, cleaned, marts; ERD sketch.
+
+Thu Aug 21
+- DSA: Sliding Window; 3–4 problems (longest substring, subarray sums).
+- SQL: Window frames, lag/lead; 2 queries with frames (rows between).
+- Labs: Log parser (Python); parse→CSV/JSON; load to staging table.
+- Fund: Linux processes, systemd timers vs cron; simple backup script with tar/gzip.
+- SD: Backfills/reprocessing strategies; write re-run notes.
+- Cert: SAA VPC basics (subnets, route tables, IGW/NAT); DEA Athena intro.
+- Proj: Write SQL for sessionization and p95 latency; capture EXPLAIN.
+
+Fri Aug 22
+- DSA: Two Pointers; 3–4 problems (sorted arrays, three-sum, palindrome).
+- SQL: Anti/semi joins; duplicates handling; NULL semantics.
+- Labs: Indexing vs full scans on queries; add proper indexes and compare plans.
+- Fund: Python typing/mypy, exceptions, logging basics.
+- SD: Data contracts and schema evolution; write a JSON schema for logs.
+- Cert: DEA Glue/Athena overview; SAA storage classes (S3 tiers).
+- Proj: Unit tests for parser; Dockerfile; Makefile (test, format, run).
+
+Sat Aug 23
+- DSA: Linked Lists; 3 problems (reverse, detect cycle, merge).
+- SQL: CTEs; 2 recursive CTEs (hierarchy/path) on small test data.
+- Labs: Build small perf test (timings) for SQL queries; record numbers.
+- Fund: Git hooks (pre-commit), PR template, CODEOWNERS (self); CI green.
+- SD: Failure modes and DLQ/quarantine plan for bad rows.
+- Cert: SAA HA/resilience basics (multi-AZ, ALB); DEA partitioning intro.
+- Proj (4–5h): Integrate pipeline end-to-end; store execution plan screenshots.
+
+Sun Aug 24 (Deliver Project 1)
+- DSA: Stacks/Queues; 3 problems (valid parentheses, min stack, queue via stacks).
+- SQL: Grouping sets/rollup/cube; 2 queries; compare scans.
+- Labs: Final polish; add README diagrams (ERD, flow).
+- Fund: Shell scripts for run/start/stop; env vars (.env.example).
+- SD: SLA/SLOs; backfill steps; on-call notes.
+- Cert: DEA practice 15–20 Q (storage/Athena); review misses.
+- Proj (4–5h): Finalize tests, docs; tag v1.0; retrospective.
+
+--------------------------------------------------------------------------------
+
+WEEK 2: Mon Aug 25 – Sun Aug 31 (S3 Lake + Glue + Athena + dbt + Lambda)
+Goal: Bronze/Silver/Gold on S3; Glue Catalog; Athena; dbt basics; Lambda to trigger crawler; deliver Project 2.
+
+Mon Aug 25
+- DSA: Two Pointers (practice set).
+- SQL: Window frames review; performance with partition/order.
+- Labs: Create S3 buckets (bronze/silver/gold); enable AWS Budgets alert.
+- Fund: AWS CLI configure; IAM least-privilege user + MFA.
+- SD: Medallion architecture; naming/partitioning standards.
+- Cert: SAA IAM policies; DEA S3 + Glue fundamentals.
+- Proj: Define data set (e.g., NYC Taxi); raw→bronze upload.
+
+Tue Aug 26
+- DSA: Linked Lists (advanced).
+- SQL: Set operations (union/except/intersect); de-dup strategies.
+- Labs: Glue Crawler on bronze; Athena CTAS to Parquet in silver.
+- Fund: S3 partitioning strategy (dt=yyyy-mm-dd); compression (snappy).
+- SD: Idempotent partition overwrites vs merges.
+- Cert: DEA Athena cost controls; SAA S3 security (bucket policies, encryption).
+- Proj: Create dbt project; basic models + tests.
+
+Wed Aug 27
+- DSA: Stacks/Queues (queues, monotonic stack).
+- SQL: EXPLAIN/ANALYZE on Athena; bytes scanned; partition pruning.
+- Labs: dbt tests (unique/not_null); build docs site; sources + seeds.
+- Fund: GitHub Actions CI to run dbt tests; cache deps.
+- SD: Data quality gates design; thresholds.
+- Cert: SAA VPC endpoints for S3; DEA Glue Data Catalog limits.
+- Proj: Gold marts design; incremental vs full.
+
+Thu Aug 28
+- DSA: Arrays/Strings mixed.
+- SQL: Recursive CTE on Athena alternative (simulate recursion via stages).
+- Labs: Lambda (Python) S3 put → trigger Glue crawler; SNS notification.
+- Fund: Lambda packaging, layers; logs in CloudWatch; retries/DLQ via SQS.
+- SD: Event-driven vs scheduled; failure fan-out.
+- Cert: DEA Glue jobs intro; SAA Lambda basics.
+- Proj: Wire Lambda + Glue; document IAM roles.
+
+Fri Aug 29
+- DSA: Hashing practice.
+- SQL: Materialized views emulation in Athena (CTAS refresh pattern).
+- Labs: Add partition projection (Athena) if applicable.
+- Fund: Cost guardrails; track scanned bytes per query.
+- SD: Backfill plan: reprocess a partition range.
+- Cert: DEA Lake Formation basics (read concepts); SAA KMS encryption.
+- Proj: Ensure dbt tests pass in CI; finalize diagrams.
+
+Sat Aug 30
+- DSA: Sliding Window timed set.
+- SQL: Complex window (percent_rank, ntile).
+- Labs: Validate silver→gold correctness; row counts at each step.
+- Fund: Terraform starter (optional) for S3/IAM.
+- SD: SLOs for freshness and availability.
+- Cert: SAA practice set (~20 Q); review.
+- Proj (4–5h): End-to-end run; capture costs; write tradeoffs.
+
+Sun Aug 31 (Deliver Project 2)
+- DSA: Two Pointers timed set.
+- SQL: Tuning exercise: reduce scan by partition filters.
+- Labs: Final checks; cleanup temp tables/old partitions.
+- Fund: Update README; publish dbt docs artifact.
+- SD: Incident drill: bad schema in bronze; recovery steps.
+- Cert: DEA practice (~20 Q); review.
+- Proj (4–5h): Finalize docs, IAM snippets; tag release.
+
+--------------------------------------------------------------------------------
+
+WEEK 3: Mon Sep 1 – Sun Sep 7 (Spark + Delta on DBX; Glue ETL Spark jobs)
+Goal: Spark fundamentals; Delta MERGE/OPTIMIZE; Autoloader; Glue Spark job; deliver Project 3.
+
+Mon Sep 1
+- DSA: Trees basics (DFS/BFS).
+- SQL: Partitioning/clustering/bucketing theory.
+- Labs: Databricks CE setup; cluster; notebooks; dbfs basics.
+- Fund: PySpark basics; transformations/actions; explain plans.
+- SD: Shuffle, skew, partitioning; design for joins.
+- Cert: DBX-DEA lakehouse intro; DEA Spark basics.
+- Proj: Bronze ingestion plan (Autoloader or batch).
+
+Tue Sep 2
+- DSA: Trees (lowest common ancestor, balanced).
+- SQL: Materialized views; Spark SQL cache/persist strategies.
+- Labs: Silver transforms with windowing; cache and measure.
+- Fund: Delta tables creation; schema evolution basics.
+- SD: Upserts and idempotency with Delta MERGE.
+- Cert: DBX-DEA Delta basics; DEA file formats.
+- Proj: Implement MERGE for CDC; add simple load test.
+
+Wed Sep 3
+- DSA: Tries (prefix tree) basics.
+- SQL: Bucketing vs partitioning; when to use.
+- Labs: OPTIMIZE + ZORDER; VACUUM safety; measure query speed.
+- Fund: chispa tests for PySpark transformations.
+- SD: Late data handling; watermarking concepts (preview).
+- Cert: DEA Glue job bookmarks; pushdown predicates.
+- Proj: Implement Autoloader into bronze; infer schema.
+
+Thu Sep 4
+- DSA: Trees mixed practice.
+- SQL: Window frame tuning on Spark SQL.
+- Labs: Glue Spark ETL job (S3 → Parquet/Delta); job params; bookmarks.
+- Fund: Compare cost/latency DBX vs Glue job; record metrics.
+- SD: Silver→Gold consistency and idempotent reruns.
+- Cert: DBX-DEA practice (~20 Q).
+- Proj: Integrate Glue job into pipeline; tests.
+
+Fri Sep 5
+- DSA: Trees review + 1 trie problem.
+- SQL: Stats freshness and pruning; analyze table.
+- Labs: Autoloader schema evolution (add column) and MERGE behavior.
+- Fund: Logging/metrics for Spark jobs (counters).
+- SD: Backfill approach with Delta (overwrite partitions safely).
+- Cert: DEA Spark/Delta practice (~20 Q).
+- Proj: Documentation draft; diagrams.
+
+Sat Sep 6
+- DSA: Mixed (trees/tries).
+- SQL: Complex joins tuning; broadcast hints vs shuffle.
+- Labs: Scale test (bigger input); measure shuffle size/partitions.
+- Fund: Cost notes (DBX cluster configs).
+- SD: Failure drills: schema mismatch; checkpoint cleanup.
+- Cert: DBX-DEA mock (half-length).
+- Proj (4–5h): End-to-end validation; finalize tests.
+
+Sun Sep 7 (Deliver Project 3)
+- DSA: Trees timed set.
+- SQL: Review and EXPLAIN comparisons (before/after OPTIMIZE).
+- Labs: Final polish; VACUUM configuration.
+- Fund: README updates; include timings and load profiles.
+- SD: SLA/SLOs; recovery playbook.
+- Cert: DBX-DEA review sheet; schedule exam next week if ready.
+- Proj (4–5h): Release and tag; retrospective.
+
+--------------------------------------------------------------------------------
+
+WEEK 4: Mon Sep 8 – Sun Sep 14 (Airflow, dbt Advanced, Quality, Serverless)
+Goal: Airflow orchestration; dbt macros/snapshots; GE/dbt-expectations; optional Step Functions branch; deliver Project 4.
+
+Mon Sep 8
+- DSA: Graphs (BFS).
+- SQL: Stats/indexes; partition pruning in warehouses.
+- Labs: Docker Airflow; connections; Variables/Secrets; basic DAG.
+- Fund: Airflow task groups; retries/backoff.
+- SD: Orchestration patterns; idempotent tasks.
+- Cert: DBX-DEA practice exam (timed).
+- Proj: DAG skeleton (ingest→Spark→dbt→quality→notify).
+
+Tue Sep 9
+- DSA: Graphs (DFS).
+- SQL: Query rewrites; CBO hints.
+- Labs: dbt snapshots (SCD2); macro for repeated transforms.
+- Fund: GE or dbt-expectations; define data quality tests.
+- SD: Quality gates and stop-the-line behavior.
+- Cert: DEA Glue/Athena domain deep-dive.
+- Proj: Integrate dbt snapshots; wire quality checks.
+
+Wed Sep 10
+- DSA: Graphs shortest paths (BFS on unweighted).
+- SQL: Window vs subqueries tradeoffs.
+- Labs: Airflow SLA/miss callbacks; email/Slack notify.
+- Fund: OpenLineage/Marquez optional wiring.
+- SD: Lineage and blast radius considerations.
+- Cert: SAA VPC + security groups; NACLs.
+- Proj: Add notification and lineage hooks.
+
+Thu Sep 11
+- DSA: Graphs practice set.
+- SQL: Partition filters verification; EXPLAIN demos.
+- Labs: Optional Step Functions state machine calling Glue + Lambda.
+- Fund: EventBridge schedules vs Airflow schedules.
+- SD: Serverless vs orchestrator tradeoffs.
+- Cert: DBX-DEA final review; light mock (if sitting exam this week).
+- Proj: Add rerun/backfill tasks; document idempotency.
+
+Fri Sep 12
+- DSA: Heaps introduction.
+- SQL: Cost-aware SQL; scan bytes and caching.
+- Labs: Retry/backoff strategies; dead-letter/quarantine bucket.
+- Fund: Secrets in Airflow (Connections, Env vars).
+- SD: SLIs/SLOs and alert thresholds.
+- Cert: Sit DBX-DEA exam (or schedule for Sat).
+- Proj: Stabilize DAG; run full E2E; collect metrics.
+
+Sat Sep 13
+- DSA: Heaps practice.
+- SQL: Window + join hybrid query.
+- Labs: Optimization pass on slowest tasks.
+- Fund: CI for DAG validation (flake8/black + simple tests).
+- SD: Failure drill: upstream task fails; re-run flow.
+- Cert: If not done Fri, sit DBX-DEA today.
+- Proj (4–5h): Finalize orchestration; diagrams.
+
+Sun Sep 14 (Deliver Project 4)
+- DSA: Graphs timed set.
+- SQL: Final EXPLAIN snapshots for README.
+- Labs: Lineage screenshot; SLA report.
+- Fund: README and playbook; clean env variables.
+- SD: Production readiness checklist review.
+- Cert: DEA practice (20 Q); review.
+- Proj (4–5h): Tag release; retrospective.
+
+--------------------------------------------------------------------------------
+
+WEEK 5: Mon Sep 15 – Sun Sep 21 (Kafka + Spark Structured Streaming)
+Goal: Kafka topics/partitions; Schema Registry; Spark Structured Streaming to Delta; deliver Project 5.
+
+Mon Sep 15
+- DSA: Heaps (top-K).
+- SQL: Streaming-friendly SQL; upserts/merges patterns.
+- Labs: Docker Kafka + Schema Registry; create topics; producer CLI.
+- Fund: Avro/Protobuf schemas; compatibility modes.
+- SD: Exactly-once semantics overview.
+- Cert: SAA messaging (SQS/SNS/Kinesis vs Kafka).
+- Proj: Define event schema; topic partitioning strategy.
+
+Tue Sep 16
+- DSA: Greedy basics.
+- SQL: Late/out-of-order data handling logic.
+- Labs: Python producer (synthetic clickstream).
+- Fund: Consumer groups; offsets; lag basics.
+- SD: Watermarking and state store scaling.
+- Cert: DEA streaming jobs overview.
+- Proj: Build Spark Structured Streaming skeleton job.
+
+Wed Sep 17
+- DSA: Heaps + Greedy mixed.
+- SQL: MERGE semantics; idempotent upsert logic.
+- Labs: Add watermarking; windowed aggregations; checkpointing.
+- Fund: Transactional sink to Delta; exactly-once patterns.
+- SD: Backpressure strategy; micro-batch tuning.
+- Cert: SAA durability/throughput tradeoffs.
+- Proj: Write to Delta silver; validate aggregation accuracy.
+
+Thu Sep 18
+- DSA: Greedy practice set.
+- SQL: Schema evolution-aware queries.
+- Labs: Enforce schema with Registry; evolve 1 field; redeploy.
+- Fund: Consumer lag metrics; JMX or scripts.
+- SD: Quarantine for bad messages; replay strategy.
+- Cert: DEA practice (~20 Q).
+- Proj: Upsert into gold; correctness tests.
+
+Fri Sep 19
+- DSA: Mixed (heaps/greedy).
+- SQL: Cost/perf in streaming sinks; file sizes and compaction.
+- Labs: Optimize streaming sink partitioning and files.
+- Fund: Logging/metrics for streaming job.
+- SD: SLA/SLOs for latency and freshness.
+- Cert: SAA review (resilience patterns).
+- Proj: Document lag thresholds and alerts.
+
+Sat Sep 20
+- DSA: Timed mixed set.
+- SQL: Tuning review.
+- Labs: Failure drill: drop consumer state; recover with checkpoints.
+- Fund: CI for streaming code (unit tests + small integration).
+- SD: Incident postmortem template.
+- Cert: SAA practice test (timed, half-length).
+- Proj (4–5h): Integrate E2E; real-time dashboard optional.
+
+Sun Sep 21 (Deliver Project 5)
+- DSA: Timed set.
+- SQL: Review and finalize EXPLAIN docs.
+- Labs: Final validations; small load test.
+- Fund: README; ops notes; cost.
+- SD: Backfill and replay doc; runbook.
+- Cert: DEA practice (20–30 Q); review.
+- Proj (4–5h): Tag release; retrospective.
+
+--------------------------------------------------------------------------------
+
+WEEK 6: Mon Sep 22 – Sun Sep 28 (Hadoop/Hive/EMR + Performance)
+Goal: Build Hive warehouse on S3; benchmark vs Athena and Delta/DBX; deliver Project 6.
+
+Mon Sep 22
+- DSA: Recursion basics.
+- SQL: Hive/Presto/Athena nuances.
+- Labs: Spin EMR or local Hive; create external tables over S3.
+- Fund: ORC vs Parquet; compression codecs.
+- SD: Partitioning/bucketing strategies.
+- Cert: SAA cost optimization basics.
+- Proj: Choose star schema; define queries to benchmark.
+
+Tue Sep 23
+- DSA: Backtracking.
+- SQL: File sizing; small-file mitigation.
+- Labs: Create partitioned tables; load sample data.
+- Fund: Tez vs Spark execution for Hive.
+- SD: Metadata maintenance and schema evolution.
+- Cert: DEA EMR fundamentals.
+- Proj: Prepare Athena equivalents; CTAS to optimize.
+
+Wed Sep 24
+- DSA: Recursion/backtracking practice.
+- SQL: Stats gathering; analyze tables.
+- Labs: Run benchmark queries; capture timings/cost.
+- Fund: Presto/Trino vs Hive differences (skim).
+- SD: Choosing engines per workload.
+- Cert: SAA storage tradeoffs (EBS/EFS/FSx).
+- Proj: Compare to Databricks/Delta equivalents.
+
+Thu Sep 25
+- DSA: DP 1D intro.
+- SQL: Partition pruning validation in Hive/Athena.
+- Labs: Try bucketing; measure shuffle joins.
+- Fund: EMR cluster sizing and autoscaling basics.
+- SD: Spot vs on-demand cost/sla tradeoffs.
+- Cert: DEA practice set (20 Q).
+- Proj: Document methodology and results.
+
+Fri Sep 26
+- DSA: DP 1D practice.
+- SQL: Materialization/caching strategies.
+- Labs: Compression codec comparison; cost notes.
+- Fund: Security for EMR (IAM roles, S3 perms).
+- SD: Operational overhead vs managed services.
+- Cert: SAA practice (20 Q).
+- Proj: Draft report; diagrams.
+
+Sat Sep 27
+- DSA: Timed mixed (recursion/DP).
+- SQL: Review/tuning.
+- Labs: Validate reproducibility (scripts).
+- Fund: Cleanup EMR resources (avoid costs).
+- SD: Postmortem on slowest query.
+- Cert: DEA/SAA review notes.
+- Proj (4–5h): Finalize benchmark report.
+
+Sun Sep 28 (Deliver Project 6)
+- DSA: Timed set.
+- SQL: Final notes and EXPLAINs saved.
+- Labs: Repo cleanup; ensure scripts are idempotent.
+- Fund: README and ADR entry for engine choice.
+- SD: Summarize tradeoffs and recommendations.
+- Cert: SAA timed practice (half/full).
+- Proj (4–5h): Tag release; retrospective.
+
+--------------------------------------------------------------------------------
+
+WEEK 7: Mon Sep 29 – Sun Oct 5 (CI/CD with Jenkins; Packaging; Secrets; IaC)
+Goal: Productionize a prior pipeline with CI/CD, env promotion, secrets mgmt, optional Terraform; deliver Project 7.
+
+Mon Sep 29
+- DSA: DP 2D intro.
+- SQL: Cost-aware SQL (caching, partition pruning).
+- Labs: Jenkins in Docker; Jenkinsfile skeleton.
+- Fund: Containerize batch job; multi-stage Docker build.
+- SD: Promotion flows (dev→staging→prod); approvals.
+- Cert: SAA well-architected overview.
+- Proj: Choose pipeline to productionize; define release strategy.
+
+Tue Sep 30
+- DSA: DP 2D practice.
+- SQL: Row/column masking concepts.
+- Labs: CI stages (lint/test/build); parallel steps; cache deps.
+- Fund: Secrets via SSM/Secrets Manager; inject at runtime.
+- SD: Canary and rollback patterns.
+- Cert: DEA governance basics.
+- Proj: Add config per environment; feature flags.
+
+Wed Oct 1
+- DSA: Scheduling (intervals).
+- SQL: Access controls in warehouse (Athena/DBX SQL).
+- Labs: Contract tests (schemas); SQL regression tests thresholds.
+- Fund: Makefile targets (deploy, rollback).
+- SD: SLIs/SLOs dashboards (basic metrics).
+- Cert: SAA practice set (20–30 Q).
+- Proj: Implement staging deployment.
+
+Thu Oct 2
+- DSA: DP mixed practice.
+- SQL: Cost/perf review tasks.
+- Labs: Terraform starter (S3/IAM/Glue) optional; plan/apply in sandbox.
+- Fund: PR checks mandatory; branch protection rules.
+- SD: Change management and release notes.
+- Cert: DEA practice (20 Q).
+- Proj: Implement canary; document rollback.
+
+Fri Oct 3
+- DSA: DP timed set.
+- SQL: Masking demo; verify with test users.
+- Labs: Wire CI → deploy on merge to main (dev env).
+- Fund: Observability: logs/metrics exported.
+- SD: On-call runbook draft.
+- Cert: SAA full-length practice (timed).
+- Proj: Dry run release; fix gaps.
+
+Sat Oct 4
+- DSA: Mixed timed.
+- SQL: Review anomalous queries.
+- Labs: Finalize Jenkins pipeline and artifacts.
+- Fund: Secrets rotation drill.
+- SD: Failure drill: bad deploy; rollback.
+- Cert: Review misses from SAA mock.
+- Proj (4–5h): End-to-end promotion; docs.
+
+Sun Oct 5 (Deliver Project 7)
+- DSA: Timed set.
+- SQL: Final access control checks.
+- Labs: Wrap up IaC (if added); tag resources.
+- Fund: README; release process.
+- SD: SLA/SLOs captured; alert thresholds.
+- Cert: SAA quick review; schedule exam next week.
+- Proj (4–5h): Tag release; retrospective.
+
+--------------------------------------------------------------------------------
+
+WEEK 8: Mon Oct 6 – Sun Oct 12 (System Design + Security/Governance + Cost/FinOps)
+Goal: Senior-level design doc, governance/security, DR/HA, cost; SAA exam; deliver Project 8.
+
+Mon Oct 6
+- DSA: LRU/LFU design.
+- SQL: Row-level security/masking patterns.
+- Labs: Draft reference architecture outline (batch+streaming+governance).
+- Fund: KMS, encryption at rest/in transit.
+- SD: DR/HA, RTO/RPO, multi-region.
+- Cert: SAA last-mile review; light practice.
+- Proj: Decide scope; start ADRs.
+
+Tue Oct 7
+- DSA: Concurrency (threading vs multiprocessing).
+- SQL: Access policies and auditing.
+- Labs: Data contracts; schema evolution lifecycle.
+- Fund: Lake Formation basics.
+- SD: CDC with Debezium/Kafka Connect patterns.
+- Cert: Sit SAA exam (or Wed).
+- Proj: Diagrams (context/dataflow/sequence).
+
+Wed Oct 8
+- DSA: Async IO basics.
+- SQL: Masking demo (warehouse of choice).
+- Labs: Observability: lineage, metrics, alerting.
+- Fund: VPC/PrivateLink patterns for analytics.
+- SD: Backfills/replay; idempotency; cold start plans.
+- Cert: If not taken Tue, sit SAA today; otherwise DEA study pivot.
+- Proj: Write governance and security sections.
+
+Thu Oct 9
+- DSA: Profiling in Python (timeit, cProfile).
+- SQL: Cost-aware materialization strategy.
+- Labs: Cost guardrails: tagging, allocation, caching, OPTIMIZE cadence.
+- Fund: Quotas/limits review (S3, Glue, Lambda).
+- SD: Failure modes and mitigations table.
+- Cert: DEA practice (full-length).
+- Proj: Write cost model and SLAs/SLOs.
+
+Fri Oct 10
+- DSA: Concurrency mixed practice.
+- SQL: Engine-specific quirks (Athena/Presto vs Spark/DBX SQL).
+- Labs: Security: IAM design for personas; PII handling.
+- Fund: Audit and logging strategy.
+- SD: Tradeoffs summary and tech choices rationale.
+- Cert: Review DEA misses.
+- Proj: First full draft ready for review.
+
+Sat Oct 11
+- DSA: Timed set.
+- SQL: Review.
+- Labs: Polish diagrams; check consistency.
+- Fund: Doc lint (links, tables of contents).
+- SD: Executive summary and risks.
+- Cert: DEA practice set (timed).
+- Proj (4–5h): Finalize doc.
+
+Sun Oct 12 (Deliver Project 8)
+- DSA: Timed set.
+- SQL: Final touch.
+- Labs: Publish design doc; add to portfolio.
+- Fund: README; index of ADRs.
+- SD: Present to “rubber duck”; revise unclear parts.
+- Cert: DEA domain review (streaming, Glue, EMR, governance).
+- Proj (4–5h): Tag release; retrospective.
+
+--------------------------------------------------------------------------------
+
+WEEK 9: Mon Oct 13 – Sat Oct 18 (GenAI-in-DE + Capstone + Interview Bootcamp)
+Goal: Add GenAI enrichment to unified lakehouse; finalize portfolio; sit AWS DEA; prepare interview deck; deliver Capstone.
+
+Mon Oct 13
+- DSA: Mixed timed review.
+- SQL: Mixed timed review.
+- Labs: Build embedding pipeline (text → embeddings → pgvector/FAISS).
+- Fund: PII redaction options; rate limiting; budgeting for API calls.
+- SD: RAG data flows; latency budgets; drift monitoring.
+- Cert: DEA practice set (timed).
+- Proj: Capstone scope (batch + streaming + GenAI enrichment).
+
+Tue Oct 14
+- DSA: Mock interview DSA round (45–60m) + review.
+- SQL: Mock SQL tuning/design + review.
+- Labs: Orchestrate embedding job with Airflow; dbt-derived features.
+- Fund: Observability for enrichment (counters, token costs).
+- SD: Fallback strategy (cached categories, heuristic).
+- Cert: DEA weak areas remediation.
+- Proj: Integrate enrichment into silver→gold.
+
+Wed Oct 15
+- DSA: Concurrency/async recap.
+- SQL: Engine quirks quick-fire.
+- Labs: Semantic search demo over vector store; simple API or notebook.
+- Fund: Security: store prompts/outputs safely; masking.
+- SD: End-to-end diagram and SLOs for capstone.
+- Cert: DEA full-length practice (timed).
+- Proj: Wire lineage + quality gates.
+
+Thu Oct 16
+- DSA: Timed set (mixed).
+- SQL: Timed set with EXPLAIN notes.
+- Labs: Performance/cost pass on enrichment; batch size, caching.
+- Fund: CI for enrichment (unit tests; mock LLM).
+- SD: Incident drills for API failures/timeouts.
+- Cert: Review misses; schedule exam.
+- Proj: Prepare dashboards (Athena/DBX SQL), metrics.
+
+Fri Oct 17
+- DSA: Light review; rest brain a bit.
+- SQL: Light review; finalize notes.
+- Labs: Final E2E validation; backfill/replay tested.
+- Fund: Docs polish; include costs/security notes.
+- SD: Prepare 10–12 slide interview deck (problem, arch, ops, results).
+- Cert: Sit AWS DEA (or Sat).
+- Proj: Freeze features; fix critical issues only.
+
+Sat Oct 18 (Deliver Capstone)
+- DSA: Quick warm-up (30m).
+- SQL: Quick warm-up (30m).
+- Labs/Proj (4–6h): Finalize capstone; demos/screenshots; tag release.
+- Fund: Portfolio update; index all projects; link design doc and deck.
+- SD: Mock presentation run-through (30m).
+- Cert: If not done Fri, sit AWS DEA today.
+- Wrap: Retrospective; plan post-18th goals.
+
+--------------------------------------------------------------------------------
+
+How to adapt daily if you overrun
+- Take time from Fund or SD blocks first.
+- Keep DSA (90m) and SQL (60m) sacred whenever possible.
+- Protect weekend project windows; that’s where portfolio value compounds.
+
+Checklist to keep in your repo (copy into README)
+- Daily: DSA done; SQL done; labs progress; notes logged; one perf/cost/security insight.
+- Weekly: Project delivered with tests, quality gates, docs, diagrams; CI green; retrospective done.
+- Certifications: One measurable step daily; timed practice weekly; two full-length before each exam.
+
+Good luck—stick to the cadence, keep everything versioned, observable, and documented. Your portfolio will reflect senior-level habits.
